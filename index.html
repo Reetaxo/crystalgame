@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+<script src="assets/javascript/game.js"> </script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+  </script>
+
+<script type="text/javascript">
+
+</script>
+
+  <title>Syreeta's Guessing Game</title>
+
+</head>
+
+
+<body>
+
+
+  <h1>Number to Guess: <span id="number-to-guess"></span></h1>
+
+  <!-- Note that this div is now empty. We will fill it dynamically -->
+  <div id="Instructions">
+
+  <h2>You Win, You Gin!</h2>
+  <p>You will be given a random number at the start of the game.</p>
+  <p>There are four drinks below. By clicking on a drink, you will add a specific amount of points to your random score. </p>
+
+  </div>
+
+  <br>
+
+
+<div id="crystals">
+
+<!-- <img class="drink-images" src="assets/images/gin1.jpg" alt="gin1">
+<img class="drink-images" src="assets/images/gin2.jpg" alt="gin2">
+<img class="drink-images" src="assets/images/gin3.jpg" alt="gin3">
+<img class="drink-images" src="assets/images/gin4.jpg" alt="gin4"> -->
+
+
+</div>
+
+<div id="game">
+  <p id="wins">Wins: <span id="winCounter"></span></p>
+  <p id="losses">Losses: <span id="lossCounter"></span></p>
+
+</div>
+
+
+  <!-- JAVASCRIPT  -->
+  <!-- ========================================= -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script type="text/javascript">
+
+ 
+  var counter = 0;
+  var losses = 0;
+  var total = 0;
+  var targetNumber = Math.floor(Math.random() * 120);
+
+  $("#number-to-guess").text(targetNumber);
+
+  var counter = 0;
+
+  // Now for the hard part. Creating multiple crystals each with their own unique number value.
+
+  // We begin by expanding our array to include four options.
+  var numberOptions = [10, 5, 3, 7];
+
+  // Next we create a for loop to create crystals for every numberOption.
+  for (var i = 0; i < numberOptions.length; i++) {
+
+    // For each iteration, we will create an imageCrystal
+    var imageCrystal = $("<img>");
+
+    // First each crystal will be given the class ".crystal-image".
+    // This will allow the CSS to take effect.
+    imageCrystal.addClass("drink-images");
+
+    // Each imageCrystal will be given a src link to the crystal image
+    imageCrystal.attr("src", "assets/images/gin3.jpg");
+
+    // Each imageCrystal will be given a data attribute called data-crystalValue.
+    // This data attribute will be set equal to the array value.
+    imageCrystal.attr("data-crystalvalue", numberOptions[i]);
+
+    // Lastly, each crystal image (with all it classes and attributes) will get added to the page.
+    $("#crystals").append(imageCrystal);
+  }
+
+  // This time, our click event applies to every single crystal on the page. Not just one.
+  $(".drink-images").on("click", function() {
+      console.log ("Hello world")
+
+    // Determining the crystal's value requires us to extract the value from the data attribute.
+    // Using the $(this) keyword specifies that we should be extracting the crystal value of the clicked crystal.
+    // Using the .attr("data-crystalvalue") allows us to grab the value out of the "data-crystalvalue" attribute.
+    // Since attributes on HTML elements are strings, we must convert it to an integer before adding to the counter
+
+    var crystalValue = ($(this).attr("data-crystalvalue"));
+    crystalValue = parseInt(crystalValue);
+    // We then add the crystalValue to the user's "counter" which is a global variable.
+    // Every click, from every crystal adds to the global counter.
+    counter += crystalValue; 
+    console.log (crystalValue);
+
+    // All of the same game win-lose logic applies. So the rest remains unchanged.
+    alert("New score: " + counter);
+
+    if (counter === targetNumber) {
+      alert("You win!");
+    }
+
+    else if (counter >= targetNumber) {
+      alert("You lose!!");
+    }
+
+
+function reset(){
+    if (counter >= targetNumber) {
+      var counter = 0;
+    }
+
+}
+
+
+  });
+
+  </script>
+</body>
+</html>
