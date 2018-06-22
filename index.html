@@ -11,9 +11,8 @@
 
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <script src="assets/javascript/game.js">
+  
     
     </script>
 
@@ -22,8 +21,9 @@
 <body>
 
 
-  <h1>Number to Guess: <span id="number-to-guess"><span var = "targetNumber"></span></span></h1>
-
+  <h1>Number to Guess: <div id="number-to-guess"  ></div></h1>
+  <h1>Counter: <div id="score"  ></div></h1>
+  
   <!-- Note that this div is now empty. We will fill it dynamically -->
   <div id="Instructions">
 
@@ -51,6 +51,7 @@
   <p id="losses">Losses: <span id="lossCounter"></span></p>
 
 </div>
+
 
 
   <!-- JAVASCRIPT  -->
@@ -132,7 +133,11 @@ function reset(){
 } -->
   <!-- }); -->
 
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+  <script type="text/javascript" src="assets/javascript/game.js"></script> 
+
+  
 </body>
 
 </html>
